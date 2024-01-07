@@ -36,18 +36,18 @@ public class SceneGraphLogger : MonoBehaviour
         bool isActive = gameObject.activeSelf;
         gameObject.SetActive(!isActive);
         Scene currentScene = SceneManager.GetActiveScene();
-            GameObject[] rootObjects = currentScene.GetRootGameObjects();
+        GameObject[] rootObjects = currentScene.GetRootGameObjects();
 
-            foreach (GameObject obj in rootObjects)
-            {
+        foreach (GameObject obj in rootObjects)
+        {
                 LogGameObject(obj, 0);
-            }
+        }
     }
 
     void LogGameObject(GameObject obj, int depth)
     {
         string indent = new string(' ', depth * 2);
-          Renderer renderer = obj.GetComponent<Renderer>();
+        Renderer renderer = obj.GetComponent<Renderer>();
         if (renderer != null && renderer.isVisible)
         {
             Debug.Log($"1 {indent}{obj.name}");

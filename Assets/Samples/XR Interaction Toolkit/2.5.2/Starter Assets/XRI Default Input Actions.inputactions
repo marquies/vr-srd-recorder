@@ -2600,6 +2600,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "SceneLog",
+            "id": "b1e10db7-5dd8-4c06-b6f3-a1272cf1e41d",
+            "actions": [
+                {
+                    "name": "PrintTrigger",
+                    "type": "Button",
+                    "id": "e72e678a-14dc-4b50-b59d-ac41842ccccd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ad92b6e1-0466-44a5-af74-fab25078fbdc",
+                    "path": "<XRSimulatedController>/triggerButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrintTrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
