@@ -636,6 +636,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 439588100}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &296941002 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9014170783705847996, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
+  m_PrefabInstance: {fileID: 1731298970}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &336426667
 GameObject:
   m_ObjectHideFlags: 0
@@ -3210,6 +3215,14 @@ MonoBehaviour:
   inputSource: 5
   inputButton: 2
   inputThreshold: 0.1
+  movementSource: {fileID: 296941002}
+  creationMode: 0
+  newGestureName: 
+  cube: {fileID: 8748868027195207512, guid: 893219773891c784ab469a39151879b4, type: 3}
+  newPositionThresholdDistance: 0.05
+  OnGestureRecognized:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1579013952
 GameObject:
   m_ObjectHideFlags: 0

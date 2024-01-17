@@ -1,20 +1,39 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 //using UnityEngine.InputSystem;
-
+using PDollarGestureRecognizer;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.Events;
+using System.IO;
 
 public class MovementRecognizer : MonoBehaviour
 {
+    public XRNode inputSource;
+    public InputHelpers.Button inputButton;
+    public float inputThreshold = 0.1f;
+    public Transform movementSource;
+    public bool creationMode = true;
+    public string newGestureName;
+    public GameObject cube;
+    public float newPositionThresholdDistance = 0.05f;
 
+    [System.Serializable]
+    public class UnityStringEvent : UnityEvent<string> { }
+    public UnityStringEvent OnGestureRecognized;
+ 
+    private bool isMoving = false;   
+    private List<Gesture> trainingSet = new List<Gesture>();
+    private List<Vector3> positionList = new List<Vector3>();
     
-public XRNode inputSource;
-public InputHelpers.Button inputButton;
-public float inputThreshold = 0.1f;
 
-private bool isMoving = false;
+    void Start() {
+        string[] gestureFiles = Directory.GetFiles(Application.persistentDataPath, "*.xml");
+        foreach(string fileName in gestureFiles) {
+            trainingSet.Add(GestureIO.ReadGestureFromFile(fileName));
+        }
+    }
 
     //public InputActionReference m_ToggleSceneGraphLoggerAction;
 //public UnityEngine.XR.Interaction.Toolkit.InputHelpers.Button inputButton;
@@ -99,16 +118,43 @@ private bool isMoving = false;
 
     void StartMoving() {
         Debug.Log("Moving");
-           isMoving = true;
-            Debug.Log("Moving");
+        isMoving = true;
+        positionList.Clear();
+        positionList.Add(movementSource.position);
+        if (cube)
+            Destroy(Instantiate(cube, movementSource.position, Quaternion.identity),3);
     }  
 
     void StopMoving() {
-            isMoving = false;
-            Debug.Log("Not Moving");
+        isMoving = false;
+        Debug.Log("Not Moving");
+        Point[] pointArray = new Point[positionList.Count];
+        for(int i = 0; i < positionList.Count; i++) {
+            //pointArray[i] = new Point(positionList[i].x, positionList[i].y, positionList[i].z);
+            Vector2 point = Camera.main.WorldToScreenPoint(positionList[i]);
+            pointArray[i] = new Point(point.x, point.y, 0);
+        }
+
+        Gesture newGesture = new Gesture(pointArray);
+        if (creationMode) {
+            newGesture.Name = newGestureName;
+            trainingSet.Add(newGesture);
+
+            string fileName = Application.persistentDataPath + "/" + newGestureName + ".xml";
+            GestureIO.WriteGesture(pointArray, newGestureName, fileName);
+        } else {
+            Result gestureResult = PointCloudRecognizer.Classify(newGesture, trainingSet.ToArray());
+            Debug.Log(gestureResult.GestureClass + " " + gestureResult.Score);
+        }
     }   
     void UpdateMoving() {
         Debug.Log("Still Moving");
+        Vector3 lastPosition = positionList[positionList.Count - 1];
+        if(Vector3.Distance(movementSource.position, lastPosition) > newPositionThresholdDistance) {
+            positionList.Add(movementSource.position);
+            if (cube)
+                Destroy(Instantiate(cube, movementSource.position, Quaternion.identity),3);
+        }
     }
 
 
