@@ -44,13 +44,17 @@ public class SceneGraphLogger : MonoBehaviour
         gameObject.SetActive(!isActive);
         Scene currentScene = SceneManager.GetActiveScene();
         GameObject[] rootObjects = currentScene.GetRootGameObjects();
+        /*
         string output = "";
+        Debug.Log("--- Start Scene Graph ---");
         foreach (GameObject obj in rootObjects)
         {
-                output = output + GameObjectsAsString(obj, 0);
+            //LogGameObject(obj, 0);
+            output += GameObjectsAsString(obj, 0);
         }
         Debug.Log(output);
-
+        Debug.Log("--- End Scene Graph ---");
+        */
     }
 
     void LogGameObject(GameObject obj, int depth)
@@ -89,7 +93,7 @@ public class SceneGraphLogger : MonoBehaviour
 
         foreach (Transform child in obj.transform)
         {
-            output = output + GameObjectsAsString(obj, 0);
+            output = output + GameObjectsAsString(child.gameObject, depth + 1);
         }
         return output;
         //Debug.Log(output);

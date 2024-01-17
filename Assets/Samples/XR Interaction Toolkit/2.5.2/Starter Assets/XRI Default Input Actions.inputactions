@@ -2613,17 +2613,37 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Action Detection",
+                    "type": "Button",
+                    "id": "74669f47-cb50-4acc-a59e-4673be041701",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "ad92b6e1-0466-44a5-af74-fab25078fbdc",
-                    "path": "<XRSimulatedController>/triggerButton",
+                    "path": "<OculusTouchController>{RightHand}/triggerPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "PrintTrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc2591b2-59cd-4925-937d-11c00045a7d8",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Action Detection",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
