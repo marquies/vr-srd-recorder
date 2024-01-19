@@ -6,7 +6,7 @@ using UnityEngine.XR;
 using PDollarGestureRecognizer;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.Events;
-using System.IO;
+using System.IO; 
 
 public class MovementRecognizer : MonoBehaviour
 {
@@ -145,6 +145,9 @@ public class MovementRecognizer : MonoBehaviour
         } else {
             Result gestureResult = PointCloudRecognizer.Classify(newGesture, trainingSet.ToArray());
             Debug.Log(gestureResult.GestureClass + " " + gestureResult.Score);
+            if(gestureResult.Score > 0.7f) {
+                OnGestureRecognized.Invoke(gestureResult.GestureClass);
+            }
         }
     }   
     void UpdateMoving() {
