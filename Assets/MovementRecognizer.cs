@@ -144,7 +144,7 @@ public class MovementRecognizer : MonoBehaviour
             GestureIO.WriteGesture(pointArray, newGestureName, fileName);
         } else {
             Result gestureResult = PointCloudRecognizer.Classify(newGesture, trainingSet.ToArray());
-            Debug.Log("Gesture: " + gestureResult.GestureClass + "; Score" + gestureResult.Score);
+            Debug.Log("[Gesture] Gesture: " + gestureResult.GestureClass + "; Score: " + gestureResult.Score);
             if(gestureResult.Score > 0.7f) {
                 OnGestureRecognized.Invoke(gestureResult.GestureClass);
             }

@@ -83,7 +83,6 @@ Library: /Users/breucking/dev/fernuni/vr-demo/My-Project/Temp/BurstOutput/tempbu
 --assembly-defines=mscorlib;
 --generate-link-xml=Temp/burst.link.xml
 --temp-folder=/Users/breucking/dev/fernuni/vr-demo/My-Project/Temp/Burst
---debug=Full
 --key-folder=/Applications/Unity/Hub/Editor/2022.3.13f1/PlaybackEngines/AndroidPlayer
 --decode-folder=/Users/breucking/dev/fernuni/vr-demo/My-Project/Library/Burst
 --output=/Users/breucking/dev/fernuni/vr-demo/My-Project/Temp/BurstOutput/tempburstlibs/armeabi-v7a/lib_burst_generated
@@ -273,7 +272,6 @@ Library: /Users/breucking/dev/fernuni/vr-demo/My-Project/Temp/BurstOutput/tempbu
 --assembly-defines=mscorlib;
 --generate-link-xml=Temp/burst.link.xml
 --temp-folder=/Users/breucking/dev/fernuni/vr-demo/My-Project/Temp/Burst
---debug=Full
 --key-folder=/Applications/Unity/Hub/Editor/2022.3.13f1/PlaybackEngines/AndroidPlayer
 --decode-folder=/Users/breucking/dev/fernuni/vr-demo/My-Project/Library/Burst
 --output=/Users/breucking/dev/fernuni/vr-demo/My-Project/Temp/BurstOutput/tempburstlibs/armeabi-v7a/lib_burst_generated

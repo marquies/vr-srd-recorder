@@ -45,7 +45,7 @@ public class SceneGraphLogger : MonoBehaviour
 
     private void Toogle(InputAction.CallbackContext context)
     {
-        Debug.Log("Right Trigger Pressed");
+        Debug.Log("[Trigger] Right Trigger Pressed");
         bool isActive = gameObject.activeSelf;
         gameObject.SetActive(!isActive);
         Scene currentScene = SceneManager.GetActiveScene();
