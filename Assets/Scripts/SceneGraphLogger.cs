@@ -8,8 +8,7 @@ public class SceneGraphLogger : MonoBehaviour
 {
     public InputActionReference m_ToggleSceneGraphLoggerAction;
 
-    void Start()
-    {
+    void print() {
         Scene currentScene = SceneManager.GetActiveScene();
         GameObject[] rootObjects = currentScene.GetRootGameObjects();
         Debug.Log("--- Start Scene Graph ---");
@@ -18,6 +17,12 @@ public class SceneGraphLogger : MonoBehaviour
             LogGameObject(obj, 0);
         }
         Debug.Log("--- End Scene Graph ---");
+
+    }
+    void Start()
+    {
+    InvokeRepeating("print", 5f, 5f);  //1s delay, repeat every 1s
+
         /*string output = "";
         foreach (GameObject obj in rootObjects)
         {
@@ -40,6 +45,7 @@ public class SceneGraphLogger : MonoBehaviour
 
     private void Toogle(InputAction.CallbackContext context)
     {
+        Debug.Log("Right Trigger Pressed");
         bool isActive = gameObject.activeSelf;
         gameObject.SetActive(!isActive);
         Scene currentScene = SceneManager.GetActiveScene();

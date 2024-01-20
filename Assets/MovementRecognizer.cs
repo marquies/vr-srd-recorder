@@ -127,7 +127,7 @@ public class MovementRecognizer : MonoBehaviour
 
     void StopMoving() {
         isMoving = false;
-        Debug.Log("Not Moving");
+        Debug.Log("Stopped Moving");
         Point[] pointArray = new Point[positionList.Count];
         for(int i = 0; i < positionList.Count; i++) {
             //pointArray[i] = new Point(positionList[i].x, positionList[i].y, positionList[i].z);
@@ -144,7 +144,7 @@ public class MovementRecognizer : MonoBehaviour
             GestureIO.WriteGesture(pointArray, newGestureName, fileName);
         } else {
             Result gestureResult = PointCloudRecognizer.Classify(newGesture, trainingSet.ToArray());
-            Debug.Log(gestureResult.GestureClass + " " + gestureResult.Score);
+            Debug.Log("Gesture: " + gestureResult.GestureClass + "; Score" + gestureResult.Score);
             if(gestureResult.Score > 0.7f) {
                 OnGestureRecognized.Invoke(gestureResult.GestureClass);
             }
